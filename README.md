@@ -72,9 +72,9 @@ Targets -> Build Settingns -> Other Linker Flags
 
 Adicionar:
 
--lc++
--ObjC
--all_load
+* -lc++
+* -ObjC
+* -all_load
 
 
 
