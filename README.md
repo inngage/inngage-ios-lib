@@ -63,5 +63,21 @@ Adicionar :
 * YourProjectName-Bridging-Header.h
 
 
+Targets -> Build Settingns ->Build Active Architecture Only
+
+Set YES
+
+
+Targets -> Build Settingns -> Other Linker Flags
+
+Adicionar:
+
+-lc++
+-ObjC
+-all_load
+
+
+
+
 
 
