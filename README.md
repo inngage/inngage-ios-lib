@@ -24,6 +24,18 @@ Adicionar a liberação para segurança de tráfego de dados
 <string>Camera usage description</string>
 ```
 
+Adicionar a liberação para acesso GPS (item específico para Geolocalização)
+
+```html
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>This application requires location services to work</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>This application requires location services to work</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>This application requires location services to work</string>
+```
+
+
 **Adicionar os frameworks padrões**
 
 No projeto faça a importação do Framework:
