@@ -2,80 +2,55 @@
 
 A biblioteca possui dois arquivos:
 
-* `libPushNotificationManager.a`: é o binário da biblioteca.
+-  `InngageLibrary-Resources.bundle`: possui os arquivos de imagens utilizadas pela biblioteca;
 
-* `PushNotificationManager.h`:é a claase header,  a partir de onde serão realizada as chamadas.
+-  `InngageLibrary.framework`: é o binário da biblioteca, a partir de onde serão realizada as chamadas.
 
-Para instalar, copie os arquivos para o seu projeto no Xcode.
+Para instalar, copie os dois arquivos para raiz do seu projeto e adicione os dois arquivos ao projeto no Xcode.
 
-* **
-## **1 - Configuração do info.plist** ##
+### <a name="configuração"></a>Configuração
+
+**Configuração do info.plist**
 
 Adicionar a liberação para segurança de tráfego de dados
 
 ```html
-
-<key>InngageAppToken</key>
-<string>Token Usuário</string>
-<key>InngageApiEndpoint</key>
-<string>https://apid.inngage.com.br/v1</string>
-<key>LSRequiresIPhoneOS</key>
-<true/>
 <key>NSAppTransportSecurity</key>
 <dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-    <key>NSExceptionDomains</key>
-    <dict>
-        <key>www.inngage.me</key>
-        <string></string>
-    </dict>
+<key>NSAllowsArbitraryLoads</key>
+<true/>
 </dict>
-
+<key>NSCameraUsageDescription</key>
+<string>Camera usage description</string>
 ```
 
-* **
-## **2 - Create Bridging Header** ##
+**Adicionar os frameworks padrões**
 
-* Adicione um novo arquivo ao Xcode (File> New> File), selecione " Source " e clique em " Header File ".
+No projeto faça a importação do Framework:
 
-* Nome do arquivo "YourProjectName-Bridging-Header.h"
+Targets -> General ->Linked Frameworks and Libraries -> Add Other
 
-Targets -> Build Settingns -> Objective-C Bridging Header
+Adicionar:
+-  `InngageLibrary.framework`
 
-Adicionar na raiz do projeto :YourProjectName-Bridging-Header.h
+Targets -> General -> Build Phases -> Copy Bundle Resources
 
-* Na classe "YourProjectName-Bridging-Header.h" importar o Header da Lib 
+Adicionar:
+-  `InngageLibrary-Resources.bundle`
 
-```objective-c
-#import "PushNotificationManager.h"
+**Configurações do projeto**
 
-
-```
-
-* **
-## **3 - Configurações do projeto** ##
-
-Targets -> Build Settingns -> Objective-C Bridging Header 
+Targets -> Build Settingns -> Header Search Paths
 
 Adicionar :
-
-* YourProjectName-Bridging-Header.h
-
-
-Targets -> Build Settingns ->Build Active Architecture Only
-
-Set YES
-
+- $(PROJECT_DIR)/InngageLibrary.framework/Headers
 
 Targets -> Build Settingns -> Other Linker Flags
 
 Adicionar:
-
-* -lc++
-* -ObjC
-* -all_load
-
+- -lc++
+- -ObjC
+- -all_load
 
 
 
