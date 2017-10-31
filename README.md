@@ -24,6 +24,16 @@ Adicionar a liberação para segurança de tráfego de dados
 <string>Camera usage description</string>
 ```
 
+Adicionar a liberação para atualização da localização em Background
+
+```html
+<key>UIBackgroundModes</key>
+<array>
+<string>fetch</string>
+<string>location</string>
+</array>
+```
+
 Adicionar a liberação para acesso GPS (item específico para Geolocalização)
 
 ```html
