@@ -74,6 +74,94 @@ Adicionar:
 - -ObjC
 - -all_load
 
+## **Inngage iOS Rich Notification** ##
+
+**Notification Content Extension**
+
+No projeto faça a importação do Framework:
+
+File -> New -> Target -> iOS > Notification Content Extension
+
+![Imagem 1](/extension.png)
+
+Clique em Next para continuar com a instalação.
+
+![Imagem 2](/finish.png)
+
+Preencha os campos necessários e clique em Finish.
+
+![Imagem 3](/activate.png)
+
+Ativar a Extension scheme para o target do projeto.
+
+**Configuração do info.plist**
+
+Adicionar a configuração para Rich Notificações:
+
+```html
+<key>NSExtension</key>
+<dict>
+<key>NSExtensionAttributes</key>
+<dict>
+<key>UNNotificationExtensionDefaultContentHidden</key>
+<false/>
+<key>UNNotificationExtensionCategory</key>
+<string>br.com.inngage.Custom-Notification-Interface.notification</string>
+<key>UNNotificationExtensionInitialContentSizeRatio</key>
+<real>1</real>
+</dict>
+<key>NSExtensionMainStoryboard</key>
+<string>MainInterface</string>
+<key>NSExtensionPointIdentifier</key>
+<string>com.apple.usernotifications.content-extension</string>
+</dict>
+```
+
+**UNNotificationExtensionCategory**
+
+Especifica o identificador de uma categoria declarada pelo aplicativo usando a classe UNNotificationCategory. Esse identificador é o utilizado para os Push Inngage.
+
+**NSExtensionPointIdentifier**
+
+Chaves e valores que descrevem uma extensão de aplicativo.
+
+**UNNotificationExtensionDefaultContentHidden**
+
+Quando configurado para SIM, o sistema exibe apenas o controlador de visualização personalizado na interface de notificação. Quando configurado para NO, o sistema exibe o conteúdo de notificação padrão, além do conteúdo do seu controlador de visualização.
+
+
+**MainInterface.storyboard**
+
+Para criar a interface personalizada, abra seu  arquivo MainInterface.storyboard . Em primeiro lugar, selecione o controlador de visualização e no inspetor de atributos , altere sua altura para ser igual à sua largura.
+
+![Imagem 4](/MainInterface.png)
+
+**Configurações NotificationViewController**
+
+Importar a classe InngageAnimatedGIF.h
+
+```objective-c
+#import "InngageAnimatedGIF.h"
+```
+
+No método padrão criado na classe NotificationViewController adicionar as configurações para gerar o Rich Notification
+
+```objective-c
+- (void)didReceiveNotification:(UNNotification *)notification {
+if (notification.request.content.userInfo[@"otherCustomURL"]) {
+NSString *urlstring = notification.request.content.userInfo[@"otherCustomURL"];
+NSURL *url = [NSURL URLWithString:urlstring];
+UIImageView *  imageView = [[UIImageView alloc]init];
+imageView.image = [InngageAnimatedGIF animatedImageWithAnimatedGIFURL:url];
+
+imageView.frame = self.view.frame;
+[self.view addSubview:imageView];
+}
+}
+```
+**Inngage**
+
+© 2015-2017 | Inngage - Engajamento de Usuários | Todos os direitos reservados.
 
 
 
