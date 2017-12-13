@@ -27,11 +27,11 @@
     
     manager = [PushNotificationManager sharedInstance ];
     
-    manager.inngageAppToken = @"e605c02ac034dc676465d13e5663d1c4";
+    manager.inngageAppToken = @"bc108978f5dac4d5ce585907639070b5";
     
     NSLog(@"UIApplicationLaunchOptionsLocationKey : %@" , [launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]);
     if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
-        [manager startUpdatingLocation:500 locationAccuracyType:kCLLocationAccuracyHundredMetersType];
+        [manager startUpdatingLocation:500 locationAccuracyType:kCLLocationAccuracyBestType];
     }
 
     userInfoDict = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -48,9 +48,9 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    
     manager = [PushNotificationManager sharedInstance ];
-    [manager startUpdatingLocation:500 locationAccuracyType:kCLLocationAccuracyHundredMetersType];
+
+    [manager startUpdatingLocation:500 locationAccuracyType:kCLLocationAccuracyBestType];
 
 }
 
@@ -61,9 +61,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
     manager = [PushNotificationManager sharedInstance ];
-    [manager startUpdatingLocation:500 locationAccuracyType:kCLLocationAccuracyHundredMetersType];
+
+    [manager startUpdatingLocation:500 locationAccuracyType:kCLLocationAccuracyBestType];
 
 }
 
@@ -90,13 +90,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     NSLog(@"The generated device token string is : %@",deviceTokenString);
     
-    NSDictionary *jsonBody = @{ @"Primeiro_Nome":@"Luis Junior",
-                                @"Cidade":@"Uberlandia",
-                                @"Estado":@"MG",
-                                @"Data_Nascimento":@"09/04/1984",
+    NSDictionary *jsonBody = @{ @"Phone":@"991426364",
+                                @"Nome":@"Luis Teodoro",
+                                @"Email":@"luisteodoro.jr@gmail.com",
                                 };
     
-    [manager handlePushRegistration:deviceToken identifier:@"987654321" customField:jsonBody];
+    [manager handlePushRegistration:deviceToken identifier:@"12345678900" customField:jsonBody];
     
     if (userInfoDict != nil)
     {

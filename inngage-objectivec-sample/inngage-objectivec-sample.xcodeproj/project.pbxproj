@@ -17,7 +17,37 @@
 		31ABE8C21EAE520F0055C422 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31ABE8C01EAE520F0055C422 /* LaunchScreen.storyboard */; };
 		31ABE8D81EAE54E00055C422 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31ABE8D61EAE54E00055C422 /* CollectionViewCell.m */; };
 		31ABE8D91EAE54E00055C422 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31ABE8D71EAE54E00055C422 /* CollectionViewCell.xib */; };
+		31C8E4171FA739530011E376 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C8E4161FA739530011E376 /* UserNotifications.framework */; };
+		31C8E4191FA739530011E376 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C8E4181FA739530011E376 /* UserNotificationsUI.framework */; };
+		31C8E41D1FA739530011E376 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C8E41C1FA739530011E376 /* NotificationViewController.m */; };
+		31C8E4201FA739530011E376 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C8E41E1FA739530011E376 /* MainInterface.storyboard */; };
+		31C8E4241FA739530011E376 /* Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 31C8E4141FA739530011E376 /* Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		31C8E4371FA7435B0011E376 /* InngageLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A52A571ED70E1800544871 /* InngageLibrary.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		31C8E4221FA739530011E376 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 31ABE8A71EAE520F0055C422 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 31C8E4131FA739530011E376;
+			remoteInfo = Extension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		31C8E4281FA739530011E376 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				31C8E4241FA739530011E376 /* Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		31A52A561ED70E1800544871 /* InngageLibrary-Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "InngageLibrary-Resources.bundle"; sourceTree = SOURCE_ROOT; };
@@ -32,10 +62,17 @@
 		31ABE8BE1EAE520F0055C422 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31ABE8C11EAE520F0055C422 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31ABE8C31EAE520F0055C422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		31ABE8D41EAE53B60055C422 /* inngage-objectivec-sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "inngage-objectivec-sample.entitlements"; sourceTree = "<group>"; };
 		31ABE8D51EAE54E00055C422 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = View/CollectionViewCell.h; sourceTree = "<group>"; };
 		31ABE8D61EAE54E00055C422 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewCell.m; path = View/CollectionViewCell.m; sourceTree = "<group>"; };
 		31ABE8D71EAE54E00055C422 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewCell.xib; path = View/CollectionViewCell.xib; sourceTree = "<group>"; };
+		31C8E40F1FA7330C0011E376 /* inngage-objectivec-sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "inngage-objectivec-sample.entitlements"; sourceTree = "<group>"; };
+		31C8E4141FA739530011E376 /* Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		31C8E4161FA739530011E376 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		31C8E4181FA739530011E376 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		31C8E41B1FA739530011E376 /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		31C8E41C1FA739530011E376 /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		31C8E41F1FA739530011E376 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		31C8E4211FA739530011E376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +84,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		31C8E4111FA739530011E376 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31C8E4191FA739530011E376 /* UserNotificationsUI.framework in Frameworks */,
+				31C8E4171FA739530011E376 /* UserNotifications.framework in Frameworks */,
+				31C8E4371FA7435B0011E376 /* InngageLibrary.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -54,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				31ABE8B11EAE520F0055C422 /* inngage-objectivec-sample */,
+				31C8E41A1FA739530011E376 /* Extension */,
+				31C8E4151FA739530011E376 /* Frameworks */,
 				31ABE8B01EAE520F0055C422 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				31ABE8AF1EAE520F0055C422 /* inngage-objectivec-sample.app */,
+				31C8E4141FA739530011E376 /* Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,7 +119,7 @@
 		31ABE8B11EAE520F0055C422 /* inngage-objectivec-sample */ = {
 			isa = PBXGroup;
 			children = (
-				31ABE8D41EAE53B60055C422 /* inngage-objectivec-sample.entitlements */,
+				31C8E40F1FA7330C0011E376 /* inngage-objectivec-sample.entitlements */,
 				31ABE8CA1EAE523B0055C422 /* Lib */,
 				31ABE8CB1EAE52400055C422 /* AppDelegate */,
 				31ABE8C91EAE52310055C422 /* Storyboard */,
@@ -136,6 +186,26 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		31C8E4151FA739530011E376 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31C8E4161FA739530011E376 /* UserNotifications.framework */,
+				31C8E4181FA739530011E376 /* UserNotificationsUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		31C8E41A1FA739530011E376 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				31C8E41B1FA739530011E376 /* NotificationViewController.h */,
+				31C8E41C1FA739530011E376 /* NotificationViewController.m */,
+				31C8E41E1FA739530011E376 /* MainInterface.storyboard */,
+				31C8E4211FA739530011E376 /* Info.plist */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,15 +216,34 @@
 				31ABE8AB1EAE520F0055C422 /* Sources */,
 				31ABE8AC1EAE520F0055C422 /* Frameworks */,
 				31ABE8AD1EAE520F0055C422 /* Resources */,
+				31C8E4281FA739530011E376 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				31C8E4231FA739530011E376 /* PBXTargetDependency */,
 			);
 			name = "inngage-objectivec-sample";
 			productName = "inngage-objectivec-sample";
 			productReference = 31ABE8AF1EAE520F0055C422 /* inngage-objectivec-sample.app */;
 			productType = "com.apple.product-type.application";
+		};
+		31C8E4131FA739530011E376 /* Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31C8E4251FA739530011E376 /* Build configuration list for PBXNativeTarget "Extension" */;
+			buildPhases = (
+				31C8E4101FA739530011E376 /* Sources */,
+				31C8E4111FA739530011E376 /* Frameworks */,
+				31C8E4121FA739530011E376 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Extension;
+			productName = Extension;
+			productReference = 31C8E4141FA739530011E376 /* Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -175,6 +264,11 @@
 							};
 						};
 					};
+					31C8E4131FA739530011E376 = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = 36PR977MXC;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 31ABE8AA1EAE520F0055C422 /* Build configuration list for PBXProject "inngage-objectivec-sample" */;
@@ -191,6 +285,7 @@
 			projectRoot = "";
 			targets = (
 				31ABE8AE1EAE520F0055C422 /* inngage-objectivec-sample */,
+				31C8E4131FA739530011E376 /* Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -208,6 +303,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		31C8E4121FA739530011E376 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31C8E4201FA739530011E376 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -222,7 +325,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		31C8E4101FA739530011E376 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31C8E41D1FA739530011E376 /* NotificationViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		31C8E4231FA739530011E376 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 31C8E4131FA739530011E376 /* Extension */;
+			targetProxy = 31C8E4221FA739530011E376 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		31ABE8BB1EAE520F0055C422 /* Main.storyboard */ = {
@@ -239,6 +358,14 @@
 				31ABE8C11EAE520F0055C422 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		31C8E41E1FA739530011E376 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31C8E41F1FA739530011E376 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -291,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -340,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -353,6 +480,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "inngage-objectivec-sample/inngage-objectivec-sample.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 36PR977MXC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -372,7 +500,7 @@
 					"-lc++",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.inngage;
+				PRODUCT_BUNDLE_IDENTIFIER = TQI.ProjetoNaMao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -383,6 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "inngage-objectivec-sample/inngage-objectivec-sample.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 36PR977MXC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -402,9 +531,67 @@
 					"-lc++",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.inngage;
+				PRODUCT_BUNDLE_IDENTIFIER = TQI.ProjetoNaMao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		31C8E4261FA739530011E376 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36PR977MXC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/InngageLibrary.framework/Headers";
+				INFOPLIST_FILE = Extension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = TQI.ProjetoNaMao.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		31C8E4271FA739530011E376 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36PR977MXC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/InngageLibrary.framework/Headers";
+				INFOPLIST_FILE = Extension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = TQI.ProjetoNaMao.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -425,6 +612,15 @@
 			buildConfigurations = (
 				31ABE8C71EAE520F0055C422 /* Debug */,
 				31ABE8C81EAE520F0055C422 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31C8E4251FA739530011E376 /* Build configuration list for PBXNativeTarget "Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31C8E4261FA739530011E376 /* Debug */,
+				31C8E4271FA739530011E376 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -12,6 +12,12 @@
 #import <CoreLocation/CoreLocation.h>
 
 
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
 @interface PushNotificationManager :NSObject<NSURLSessionDataDelegate>
 
 /*CLLocationAccuracy -> The accuracy of a coordinate value, measured in meters.
@@ -25,6 +31,8 @@ typedef NS_ENUM(NSInteger,  CLLocationAccuracyType) {
     kCLLocationAccuracyKilometerType,
     kCLLocationAccuracyThreeKilometersType
 };
+
+@property NSString * inngageAppToken;
 
 -(void)handlePushRegistration:(NSData *)deviceToken;
 
@@ -42,12 +50,13 @@ typedef NS_ENUM(NSInteger,  CLLocationAccuracyType) {
 
 -(void)handleUpdateLocations:(CLLocationManager *)locations;
 
-+ (instancetype)sharedInstance;
-
-@property NSString * inngageAppToken;
-
 -(void)openWebView:(NSString *)url;
 
 - (void)startUpdatingLocation:(int)meters locationAccuracyType:(CLLocationAccuracyType )locationAccuracyType ;
+
++ (instancetype)sharedInstance;
+
+
+
 
 @end
