@@ -28,10 +28,14 @@
     manager = [PushNotificationManager sharedInstance ];
     
     manager.inngageAppToken = @"bc108978f5dac4d5ce585907639070b5";
+    manager.inngageApiEndpoint = @"https://apid.inngage.com.br/v1";
+    manager.defineLogs = YES;
+    
     
     NSLog(@"UIApplicationLaunchOptionsLocationKey : %@" , [launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]);
+    
     if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
-        [manager startUpdatingLocation:500 locationAccuracyType:kCLLocationAccuracyBestType];
+        [manager startMonitoringBackgroundLocation];
     }
 
     userInfoDict = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -48,9 +52,8 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    manager = [PushNotificationManager sharedInstance ];
 
-    [manager startUpdatingLocation:500 locationAccuracyType:kCLLocationAccuracyBestType];
+    [manager restartMonitoringBackgroundLocation];
 
 }
 
@@ -61,9 +64,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    manager = [PushNotificationManager sharedInstance ];
 
-    [manager startUpdatingLocation:500 locationAccuracyType:kCLLocationAccuracyBestType];
+    [manager startMonitoringBackgroundLocation];
 
 }
 
