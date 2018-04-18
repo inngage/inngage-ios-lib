@@ -74,6 +74,129 @@ Adicionar:
 - -ObjC
 - -all_load
 
+Targets -> Capabilities 
+
+Habilitar Push Notification
+
+**Configurações AppDelegate**
+
+Importar a classe PushNotificationManager e criar as propriedades
+
+```objective-c
+#import "PushNotificationManager.h"
+
+@property PushNotificationManager * manager;
+@property NSDictionary * userInfoDict;
+```
+
+Adicionar as configurações do método  didFinishLaunchingWithOptions
+
+```objective-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:
+        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    }
+
+    self.manager = [PushNotificationManager sharedInstance ];
+
+    //token inngage
+    self.manager.inngageAppToken = @"XXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+
+    //endpoint inngage 
+    self.manager.inngageApiEndpoint = @"https://apid.inngage.com.br/v1";
+
+    //habilitar logs
+    self.manager.defineLogs = YES;
+
+    self.userInfoDict = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+
+    //Utilizar essas configurações somente se for enviar localização do usuário
+    NSLog(@"UIApplicationLaunchOptionsLocationKey : %@" , [launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]);
+
+    if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+        [self.manager startMonitoringBackgroundLocation];
+    }
+
+    return YES;
+}
+
+```
+
+Adicionar as configurações para recebimento do push
+
+```objective-c
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings: (UIUserNotificationSettings
+*)notificationSettings
+{
+    [application registerForRemoteNotifications];
+
+    [self.manager handlePushRegisterForRemoteNotifications:notificationSettings];
+}
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+
+    NSString * deviceTokenString = [[[[deviceToken description]
+    stringByReplacingOccurrencesOfString: @"<" withString: @""]
+    stringByReplacingOccurrencesOfString: @">" withString: @""]
+    stringByReplacingOccurrencesOfString: @" " withString: @""];
+
+    NSLog(@"The generated device token string is : %@",deviceTokenString);
+
+    NSDictionary *jsonBody = @{ @"Phone":@"xxxxxxxx",
+    @"Nome":@"xxxxxxxxx",
+    @"Email":@"xxxxxxxx",
+    };
+
+    [self.manager handlePushRegistration:deviceToken identifier:@"12345678900" customField:jsonBody];
+
+        if (self.userInfoDict != nil)
+        {
+            // messageAlert libera alertas dos push no app
+            [self.manager handlePushReceived:self.userInfoDict messageAlert:YES];
+        }
+}
+
+- (void)application:(UIApplication *)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Registration for remote notification failed with error: %@", error.localizedDescription);
+
+    [self.manager handlePushRegistrationFailure:error];
+
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+
+    // messageAlert libera alertas dos push no app
+    [self.manager handlePushReceived:userInfo messageAlert:YES];
+
+}
+
+```
+
+Utilizar essas configurações somente se for enviar localização do usuário
+
+```objective-c
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+
+    [self.manager restartMonitoringBackgroundLocation];
+
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+
+    [self.manager startMonitoringBackgroundLocation];
+
+}
+
+```
+
 ## **Inngage iOS Rich Notification** ##
 
 **Notification Content Extension**
@@ -148,15 +271,15 @@ No método padrão criado na classe NotificationViewController adicionar as conf
 
 ```objective-c
 - (void)didReceiveNotification:(UNNotification *)notification {
-if (notification.request.content.userInfo[@"otherCustomURL"]) {
-NSString *urlstring = notification.request.content.userInfo[@"otherCustomURL"];
-NSURL *url = [NSURL URLWithString:urlstring];
-UIImageView *  imageView = [[UIImageView alloc]init];
-imageView.image = [InngageAnimatedGIF animatedImageWithAnimatedGIFURL:url];
+    if (notification.request.content.userInfo[@"otherCustomURL"]) {
+        NSString *urlstring = notification.request.content.userInfo[@"otherCustomURL"];
+        NSURL *url = [NSURL URLWithString:urlstring];
+        UIImageView *  imageView = [[UIImageView alloc]init];
+        imageView.image = [InngageAnimatedGIF animatedImageWithAnimatedGIFURL:url];
 
-imageView.frame = self.view.frame;
-[self.view addSubview:imageView];
-}
+        imageView.frame = self.view.frame;
+        [self.view addSubview:imageView];
+    }
 }
 ```
 **Inngage**

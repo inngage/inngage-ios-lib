@@ -8,10 +8,10 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate (){
-    PushNotificationManager * manager;
-    NSDictionary* userInfoDict;
-}
+@interface AppDelegate ()
+
+@property PushNotificationManager * manager;
+@property NSDictionary * userInfoDict;
 
 @end
 
@@ -25,20 +25,21 @@
                                                                              (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
     }
     
-    manager = [PushNotificationManager sharedInstance ];
+    self.manager = [PushNotificationManager sharedInstance ];
     
-    manager.inngageAppToken = @"bc108978f5dac4d5ce585907639070b5";
-    manager.inngageApiEndpoint = @"https://apid.inngage.com.br/v1";
-    manager.defineLogs = YES;
+    self.manager.inngageAppToken = @"bc108978f5dac4d5ce585907639070b5";
+    self.manager.inngageApiEndpoint = @"https://apid.inngage.com.br/v1";
+    self.manager.defineLogs = YES;
     
+      self.userInfoDict = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     
     NSLog(@"UIApplicationLaunchOptionsLocationKey : %@" , [launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]);
     
     if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
-        [manager startMonitoringBackgroundLocation];
+        [self.manager startMonitoringBackgroundLocation];
     }
 
-    userInfoDict = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+  
 
     return YES;
 }
@@ -53,7 +54,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 
-    [manager restartMonitoringBackgroundLocation];
+    [self.manager restartMonitoringBackgroundLocation];
 
 }
 
@@ -65,7 +66,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 
-    [manager startMonitoringBackgroundLocation];
+    [self.manager startMonitoringBackgroundLocation];
 
 }
 
@@ -79,7 +80,7 @@
 {
     [application registerForRemoteNotifications];
     
-    [manager handlePushRegisterForRemoteNotifications:notificationSettings];
+    [self.manager handlePushRegisterForRemoteNotifications:notificationSettings];
 }
 
 - (void)application:(UIApplication *)application
@@ -97,11 +98,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                                 @"Email":@"luisteodoro.jr@gmail.com",
                                 };
     
-    [manager handlePushRegistration:deviceToken identifier:@"12345678900" customField:jsonBody];
+    [self.manager handlePushRegistration:deviceToken identifier:@"12345678900" customField:jsonBody];
     
-    if (userInfoDict != nil)
+    if (self.userInfoDict != nil)
     {
-        [manager handlePushReceived:userInfoDict];
+        [self.manager handlePushReceived:self.userInfoDict messageAlert:YES];
         
     }
 }
@@ -110,16 +111,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Registration for remote notification failed with error: %@", error.localizedDescription);
     
-    [manager handlePushRegistrationFailure:error];
+    [self.manager handlePushRegistrationFailure:error];
     
 }
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
-    [manager handlePushReceived:userInfo];
-    
-    
+    [self.manager handlePushReceived:userInfo messageAlert:YES];
     
 }
 

@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger,  CLLocationAccuracyType) {
 
 -(void)handlePushRegistrationFailure:(NSError *)error;
 
--(void)handlePushReceived:(NSDictionary *)userInfo;
+-(void)handlePushReceived:(NSDictionary *)userInfo messageAlert:(BOOL)messageAlert;
 
 -(void)handleUpdateLocations:(CLLocationManager *)locations;
 
